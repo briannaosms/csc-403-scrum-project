@@ -9,10 +9,17 @@ namespace TowerDefense_TheRPG.code {
     public float Attack { get; protected set; }
     public float Defense { get; protected set; }
   }
+
   public class PlayerStats : Stats {
-    public float Health { get; private set; }
-    public float MoveSpeed { get; private set; }
+    public float Health { get; set; }
+    public int MoveSpeed { get; set; }
+
+    public PlayerStats() {
+      Health = 1.0f;
+      MoveSpeed = 8;
+    }
   }
+  
   public class WeaponStats : Stats {
 
   }

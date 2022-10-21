@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace TowerDefense_TheRPG.code {
   public abstract class ClassType {
-    public abstract void Foo();
-  }
+    public int XP { get; protected set; }
+    public int Level { get; protected set; }
+    public WeaponType WeaponType { get; protected set; }
 
-  public enum ClassType2 {
-    WARRIOR,
-    HEALER,
   }
 }
