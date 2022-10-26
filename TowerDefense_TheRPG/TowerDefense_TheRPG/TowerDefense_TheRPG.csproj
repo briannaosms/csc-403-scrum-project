@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="code\**" />
+    <EmbeddedResource Remove="code\**" />
+    <None Remove="code\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
   </ItemGroup>
 
@@ -25,10 +31,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="code\" />
   </ItemGroup>
 
   <ItemGroup>

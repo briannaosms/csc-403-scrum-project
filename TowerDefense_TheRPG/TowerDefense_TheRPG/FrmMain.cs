@@ -212,9 +212,12 @@ namespace TowerDefense_TheRPG {
             frmGO.Show();
             this.Hide();
             FormManager.PushToFormStack(frmGO);
+
+            // disable timers
             tmrMoveArrows.Enabled = false;
             tmrMoveEnemies.Enabled = false;
             tmrSpawnArrows.Enabled = false;
+
             tmrSpawnEnemies.Enabled = false;
           }
           else {

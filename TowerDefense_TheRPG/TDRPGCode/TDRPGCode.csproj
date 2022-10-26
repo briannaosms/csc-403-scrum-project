@@ -6,8 +6,10 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyVersion>1.1</AssemblyVersion>
-    <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <AssemblyVersion>1.0</AssemblyVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <Copyright>Fall 2022 CSC 403 Class</Copyright>
+    <FileVersion>1.0.0.42</FileVersion>
   </PropertyGroup>
 
 </Project>
