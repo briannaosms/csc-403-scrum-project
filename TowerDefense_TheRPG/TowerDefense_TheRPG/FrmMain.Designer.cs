@@ -1,5 +1,5 @@
 ﻿namespace TowerDefense_TheRPG {
-  partial class Form1 {
+  partial class FrmMain {
     /// <summary>
     ///  Required designer variable.
     /// </summary>
@@ -27,14 +27,16 @@
       this.lblStoryLine = new System.Windows.Forms.Label();
       this.btnStart = new System.Windows.Forms.Button();
       this.tmrTextCrawl = new System.Windows.Forms.Timer(this.components);
-      this.picVillage = new System.Windows.Forms.PictureBox();
       this.tmrSpawnEnemies = new System.Windows.Forms.Timer(this.components);
       this.tmrMoveEnemies = new System.Windows.Forms.Timer(this.components);
-      ((System.ComponentModel.ISupportInitialize)(this.picVillage)).BeginInit();
+      this.btnStoryLine = new System.Windows.Forms.Button();
+      this.tmrMoveArrows = new System.Windows.Forms.Timer(this.components);
+      this.tmrSpawnArrows = new System.Windows.Forms.Timer(this.components);
       this.SuspendLayout();
       // 
       // lblStoryLine
       // 
+      this.lblStoryLine.BackColor = System.Drawing.Color.Transparent;
       this.lblStoryLine.Font = new System.Drawing.Font("Segoe UI Emoji", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
       this.lblStoryLine.ForeColor = System.Drawing.Color.White;
       this.lblStoryLine.Location = new System.Drawing.Point(12, 9);
@@ -46,28 +48,18 @@
       // 
       this.btnStart.AutoSize = true;
       this.btnStart.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-      this.btnStart.Location = new System.Drawing.Point(455, 654);
+      this.btnStart.Location = new System.Drawing.Point(315, 617);
       this.btnStart.Name = "btnStart";
-      this.btnStart.Size = new System.Drawing.Size(176, 42);
+      this.btnStart.Size = new System.Drawing.Size(220, 70);
       this.btnStart.TabIndex = 1;
-      this.btnStart.Text = "Let\'s Do This!";
+      this.btnStart.Text = "Play";
       this.btnStart.UseVisualStyleBackColor = true;
       this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
       // 
       // tmrTextCrawl
       // 
-      this.tmrTextCrawl.Interval = 45;
+      this.tmrTextCrawl.Interval = 20;
       this.tmrTextCrawl.Tick += new System.EventHandler(this.tmrTextCrawl_Tick);
-      // 
-      // picVillage
-      // 
-      this.picVillage.BackgroundImage = global::TowerDefense_TheRPG.Properties.Resources.village;
-      this.picVillage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-      this.picVillage.Location = new System.Drawing.Point(502, 286);
-      this.picVillage.Name = "picVillage";
-      this.picVillage.Size = new System.Drawing.Size(165, 108);
-      this.picVillage.TabIndex = 2;
-      this.picVillage.TabStop = false;
       // 
       // tmrSpawnEnemies
       // 
@@ -76,23 +68,46 @@
       // 
       // tmrMoveEnemies
       // 
-      this.tmrMoveEnemies.Enabled = true;
       this.tmrMoveEnemies.Tick += new System.EventHandler(this.tmrMoveEnemies_Tick);
+      // 
+      // btnStoryLine
+      // 
+      this.btnStoryLine.AutoSize = true;
+      this.btnStoryLine.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+      this.btnStoryLine.Location = new System.Drawing.Point(630, 617);
+      this.btnStoryLine.Name = "btnStoryLine";
+      this.btnStoryLine.Size = new System.Drawing.Size(220, 70);
+      this.btnStoryLine.TabIndex = 3;
+      this.btnStoryLine.Text = "Show Storyline";
+      this.btnStoryLine.UseVisualStyleBackColor = true;
+      this.btnStoryLine.Click += new System.EventHandler(this.btnStoryLine_Click);
+      // 
+      // tmrMoveArrows
+      // 
+      this.tmrMoveArrows.Interval = 10;
+      this.tmrMoveArrows.Tick += new System.EventHandler(this.tmrMoveArrows_Tick);
+      // 
+      // tmrSpawnArrows
+      // 
+      this.tmrSpawnArrows.Interval = 5000;
+      this.tmrSpawnArrows.Tick += new System.EventHandler(this.tmrSpawnArrows_Tick);
       // 
       // Form1
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.Black;
+      this.BackgroundImage = global::TowerDefense_TheRPG.Properties.Resources.title;
+      this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
       this.ClientSize = new System.Drawing.Size(1149, 726);
-      this.Controls.Add(this.lblStoryLine);
+      this.Controls.Add(this.btnStoryLine);
       this.Controls.Add(this.btnStart);
-      this.Controls.Add(this.picVillage);
+      this.Controls.Add(this.lblStoryLine);
+      this.DoubleBuffered = true;
       this.Name = "Form1";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Tower Defense The RPG";
-      this.Load += new System.EventHandler(this.Form1_Load);
       this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-      ((System.ComponentModel.ISupportInitialize)(this.picVillage)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -103,8 +118,10 @@
     private Label lblStoryLine;
     private Button btnStart;
     private System.Windows.Forms.Timer tmrTextCrawl;
-    private PictureBox picVillage;
     private System.Windows.Forms.Timer tmrSpawnEnemies;
     private System.Windows.Forms.Timer tmrMoveEnemies;
+    private Button btnStoryLine;
+    private System.Windows.Forms.Timer tmrMoveArrows;
+    private System.Windows.Forms.Timer tmrSpawnArrows;
   }
 }
