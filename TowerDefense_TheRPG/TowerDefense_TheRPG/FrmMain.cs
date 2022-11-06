@@ -83,7 +83,8 @@ namespace TowerDefense_TheRPG {
 
       enemies = new List<Enemy>();
       arrows = new List<Arrow>();
-      player = new Player(Width / 2, Height / 2 + 100);
+      // defualting a player to be a knight for right now. selection menu will be made later.
+      player = new ClassKnight(Width / 2, Height / 2 + 100);
       village = new Village(Width / 2 - 80, Height / 2 - 50);
       village.ControlContainer.SendToBack();
       tmrSpawnEnemies.Enabled = true;
