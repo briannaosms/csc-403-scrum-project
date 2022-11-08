@@ -207,6 +207,7 @@ namespace TowerDefense_TheRPG {
         }
         else if (enemy.DidCollide(village)) {
           village.TakeDamageFrom(enemy);
+          
           if (village.CurHealth <= 0) {
             village.Hide(); // defeated
             Form frmGO = new FrmGameOver();
@@ -290,6 +291,8 @@ namespace TowerDefense_TheRPG {
       }
     }
     #endregion
+
+
     #endregion
   }
 }

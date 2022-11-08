@@ -27,6 +27,12 @@
         /// </summary>
         public bool AutoShoot { get; private set; }
 
+        public int shopAttackCounter { get; set; }
+
+        public int shopHealthCounter { get; set; }  
+
+        public int shopSpeedCounter { get; set; }
+
         /// <summary>
         /// Explicit constructor
         /// </summary>
@@ -39,6 +45,9 @@
             MoveSpeed = 15;
             Level = 1;
             XP = 0;
+            shopAttackCounter = 0;
+            shopHealthCounter = 0;
+            shopSpeedCounter = 0;
             ChangeCharacterPic("playerL" + Level);
         }
 
@@ -75,5 +84,56 @@
         public abstract void AbilityMultishot();
 
         public abstract void AbilityKnockback();
+
+        #region Shop Methods
+        
+        public void ShopAttackUp()
+        {
+            if (shopAttackCounter < 6)
+            {
+                float attackIncrement = 5;
+                Attack += attackIncrement;
+                shopAttackCounter++;
+            }
+        }
+        public void ShopHealthUp()
+        {
+            if (shopHealthCounter < 6)
+            {
+                float healthIncrement = 5;
+                float tempHealth = MaxHealth;
+                SetMaxHealth(tempHealth + healthIncrement);
+                shopHealthCounter++;
+            }
+        }
+        public void ShopSpeedUp()
+        {
+            if (shopSpeedCounter < 6)
+            {
+                int speedIncrement = 10;
+                MoveSpeed += speedIncrement;
+                shopSpeedCounter++;
+            }
+        }
+
+        public void buyUpgrade(int price)
+        {
+            Money -= price;
+        }
+
+        public int getPrice(int counter)
+        {
+            int baseUpgradeCost = 100;
+            int price = baseUpgradeCost * counter;
+            return price;
+        }
+        
+        #endregion
+
+
     }
+
+
+
+
 }
