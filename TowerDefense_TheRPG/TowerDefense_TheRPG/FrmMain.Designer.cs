@@ -1,4 +1,7 @@
-﻿namespace TowerDefense_TheRPG {
+﻿using System.Diagnostics;
+using TDRPGCode;
+
+namespace TowerDefense_TheRPG {
   partial class FrmMain {
     /// <summary>
     ///  Required designer variable.
@@ -26,12 +29,14 @@
             this.components = new System.ComponentModel.Container();
             this.lblStoryLine = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
+            this.waveCounter = new System.Windows.Forms.Label();
             this.tmrTextCrawl = new System.Windows.Forms.Timer(this.components);
             this.tmrSpawnEnemies = new System.Windows.Forms.Timer(this.components);
             this.tmrMoveEnemies = new System.Windows.Forms.Timer(this.components);
             this.btnStoryLine = new System.Windows.Forms.Button();
             this.tmrMoveArrows = new System.Windows.Forms.Timer(this.components);
             this.tmrSpawnArrows = new System.Windows.Forms.Timer(this.components);
+            //this.b = new System.Windows.Forms
             this.SuspendLayout();
             // 
             // lblStoryLine
@@ -63,8 +68,21 @@
             // 
             // tmrSpawnEnemies
             // 
-            this.tmrSpawnEnemies.Interval = 3000;
+            // increase inverval per wave
+            //this.tmrSpawnEnemies.Interval = 3000;
             this.tmrSpawnEnemies.Tick += new System.EventHandler(this.tmrSpawnEnemies_Tick);
+            Debug.WriteLine(tmrSpawnEnemies.Enabled);
+
+            //
+            //
+            //
+            this.waveCounter.Name = "Wave Counter";
+            this.waveCounter.Size = new System.Drawing.Size(200, 70);
+            this.waveCounter.Text = "Wave: " + wave.waveNumber;
+            //this.waveCounter.Refresh();
+            this.waveCounter.TextAlign = ContentAlignment.TopCenter;
+            this.waveCounter.BackColor = Color.Transparent;
+            
             // 
             // tmrMoveEnemies
             // 
@@ -103,6 +121,7 @@
             this.Controls.Add(this.btnStoryLine);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblStoryLine);
+            this.Controls.Add(this.waveCounter);
             this.DoubleBuffered = true;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -117,6 +136,7 @@
 
     private Label lblStoryLine;
     private Button btnStart;
+    private Label waveCounter;
     private System.Windows.Forms.Timer tmrTextCrawl;
     private System.Windows.Forms.Timer tmrSpawnEnemies;
     private System.Windows.Forms.Timer tmrMoveEnemies;
