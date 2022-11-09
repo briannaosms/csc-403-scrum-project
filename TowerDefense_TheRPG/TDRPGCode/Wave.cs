@@ -1,31 +1,33 @@
-﻿using TowerDefense_TheRPG.code;
+﻿using System.Diagnostics;
+using TowerDefense_TheRPG.code;
 
 namespace TDRPGCode {
     public class Wave {
-        public bool isGameActive = true;
-        public bool isWaveActive = false;
+        private bool isGameActive = true;
+        private bool isWaveActive = false;
 
-        private int currentEnemies = 0;
         private int maxEnemies;
-        public int waveNumber = 0;
+        private int waveNumber;
         public int maxWaveNumber;
-        private int enemyMultipler = 3;
-        private float spawnRate = 0.0f;
-        private Random rand = new Random();
+
         public List<Enemy> enemies;
+        private Random rand; 
         
         // ctor
-        public Wave(int maxWaveNumber, int maxEnemies, float spawnRate) {
+        public Wave(int maxWaveNumber, int maxEnemies) {
             enemies = new List<Enemy>();
+            this.rand = new Random();
+            this.waveNumber = 0;
+
             this.maxWaveNumber = maxWaveNumber;
             this.maxEnemies = maxEnemies;
-            this.spawnRate = spawnRate;
         }
         
-        // spawns a new wave of enemies
+        // pawns a new wave of enemies
         public void SpawnNewWave(int height, int width) {
-            while(isGameActive && isWaveActive && waveNumber < maxWaveNumber) {
+            while(IsSpawnConditionMet()) {
                 // Generate a position, determine what enemy to spawn, and increment the enemy counter
+                Debug.WriteLine(maxEnemies);
                 for(int i = 0; i < maxEnemies; i++) {
                     int enemyType = rand.Next(4);
                     Enemy e;
@@ -48,7 +50,6 @@ namespace TDRPGCode {
 
                     }
                     enemies.Add(e);
-                    currentEnemies++;
 
                     // If the player is dead, stop spawning enemies.
                     if(!isGameActive) {
@@ -57,9 +58,14 @@ namespace TDRPGCode {
                 }
 
                 // Set up for the next wave.
-                maxEnemies += enemyMultipler;
+                waveNumber++;
+                WaveDifficulty();
                 isWaveActive = false;
             }
+        }
+
+        public bool IsSpawnConditionMet() {
+            return isGameActive && isWaveActive && enemies.Count == 0 && waveNumber < maxWaveNumber;
         }
 
         // might have to be modified later for random village spawning
@@ -87,6 +93,37 @@ namespace TDRPGCode {
             }
         }
 
-        
+        // increases the difficulty for every 3 waves, otherwise just adds an enemy each wave
+        private void WaveDifficulty() {
+            Debug.WriteLine(waveNumber % 3 == 0);
+            if((waveNumber + 1) % 3 == 0) {
+                maxEnemies += 5;
+            }
+            else {
+                maxEnemies += 1;
+            }
+        }
+
+
+        public void EnableNextWaveSpawning() {
+            isWaveActive = true;
+        }
+
+        public bool IsGameActive() {
+            return isGameActive;
+        }
+
+        public void SetGameActive(bool value) {
+            isGameActive = value;
+        }
+
+        public int GetWaveNumber() {
+            return waveNumber;
+        }
+
+        public void IncrementWaveNumber() {
+            waveNumber++;
+        }
+
     }
 }

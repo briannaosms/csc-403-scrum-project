@@ -8,9 +8,8 @@ namespace TowerDefense_TheRPG {
         #region Fields
         private Player player;
         private Village village;
-        //private List<Enemy> enemies;
-        private Wave wave = new Wave(50, 3, 0);
-            private List<Arrow> arrows;
+        private Wave wave = new Wave(50, 3);
+        private List<Arrow> arrows;
         private string storyLine;
         private int curStoryLineIndex;
         private Random rand;
@@ -41,14 +40,15 @@ namespace TowerDefense_TheRPG {
             }
         }
         private void tmrSpawnEnemies_Tick(object sender, EventArgs e) {
-            if(wave.enemies.Count == 0 && wave.waveNumber < wave.maxWaveNumber) {
+            // If spawn conditions are met, then spawn new wave and update UI.
+            if(wave.IsSpawnConditionMet()) {
+                waveInstruction.Visible = false;
                 wave.SpawnNewWave(Height, Width);
-                wave.waveNumber += 1;
-                waveCounter.Text = "Wave: " + wave.waveNumber;
+                waveCounter.Text = "Wave: " + wave.GetWaveNumber();
                 tmrSpawnEnemies.Enabled = false;
             }
-
         }
+
         private void tmrMoveEnemies_Tick(object sender, EventArgs e) {
             MoveEnemies();
         }
@@ -63,7 +63,7 @@ namespace TowerDefense_TheRPG {
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Space && wave.enemies.Count == 0) {
                 tmrSpawnEnemies.Enabled = true;
-                wave.isWaveActive = true;
+                wave.EnableNextWaveSpawning();
             }
             else {
                 PlayerMove(e.KeyCode);
@@ -88,7 +88,7 @@ namespace TowerDefense_TheRPG {
             tmrMoveEnemies.Enabled = true;
             tmrMoveArrows.Enabled = true;
             tmrTextCrawl.Enabled = false;
-            wave.isGameActive = true;
+            wave.SetGameActive(true);
 
             // TODO: setting the background image here causes visual defects as enemies and player move
             //       around the screen. Consider either fixing these defects or setting BackgroundImage to null
@@ -187,7 +187,7 @@ namespace TowerDefense_TheRPG {
           
                 if (village.CurHealth <= 0) {
                 village.Hide(); // defeated
-                wave.isGameActive = false;
+                wave.SetGameActive(false);
                 Form frmGO = new FrmGameOver();
                 frmGO.Show();
                 this.Hide();
