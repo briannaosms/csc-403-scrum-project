@@ -26,7 +26,6 @@ namespace TowerDefense_TheRPG {
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            #region Initialization
             this.components = new System.ComponentModel.Container();
             this.lblStoryLine = new System.Windows.Forms.Label();
             this.btnStart = new System.Windows.Forms.Button();
@@ -38,114 +37,126 @@ namespace TowerDefense_TheRPG {
             this.btnStoryLine = new System.Windows.Forms.Button();
             this.tmrMoveArrows = new System.Windows.Forms.Timer(this.components);
             this.tmrSpawnArrows = new System.Windows.Forms.Timer(this.components);
-            //this.b = new System.Windows.Forms
+            this.OptionsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            #endregion
-
-            #region lblStoryLine
+            // 
+            // lblStoryLine
+            // 
             this.lblStoryLine.BackColor = System.Drawing.Color.Transparent;
             this.lblStoryLine.Font = new System.Drawing.Font("Segoe UI Emoji", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblStoryLine.ForeColor = System.Drawing.Color.White;
-            this.lblStoryLine.Location = new System.Drawing.Point(8, 8);
+            this.lblStoryLine.Location = new System.Drawing.Point(9, 11);
             this.lblStoryLine.Name = "lblStoryLine";
-            this.lblStoryLine.Size = new System.Drawing.Size(1128, 616);
+            this.lblStoryLine.Size = new System.Drawing.Size(1289, 821);
             this.lblStoryLine.TabIndex = 0;
-            #endregion
-
-            #region btnStart
+            // 
+            // btnStart
+            // 
             this.btnStart.AutoSize = true;
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStart.Location = new System.Drawing.Point(315, 617);
+            this.btnStart.Location = new System.Drawing.Point(150, 823);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(220, 70);
+            this.btnStart.Size = new System.Drawing.Size(251, 93);
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Play";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            #endregion
-
-            #region tmrTextCrawl
-            this.tmrTextCrawl.Interval = 20;
-            this.tmrTextCrawl.Tick += new System.EventHandler(this.tmrTextCrawl_Tick);
-            #endregion
-
-            #region tmrSpawnEnemies
-            // increase inverval per wave
-            //this.tmrSpawnEnemies.Interval = 3000;
-            this.tmrSpawnEnemies.Tick += new System.EventHandler(this.tmrSpawnEnemies_Tick);
-            Debug.WriteLine(tmrSpawnEnemies.Enabled);
-            #endregion
-
-            #region waveCounter
-            this.waveCounter.Name = "Wave Counter";
-            this.waveCounter.Size = new System.Drawing.Size(140, 30);
-            this.waveCounter.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // waveCounter
+            // 
             this.waveCounter.BackColor = System.Drawing.Color.Transparent;
             this.waveCounter.Font = new System.Drawing.Font("Segoe UI Emoji", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.waveCounter.ForeColor = System.Drawing.Color.White;
-            this.waveCounter.Location = new System.Drawing.Point(15, 15);
-            this.waveCounter.BringToFront();
-            #endregion
-
-            // wip
-            #region waveInstruction 
-            this.waveInstruction.Name = "Wave";
-            this.waveInstruction.Size = new System.Drawing.Size(300, 30);
-            this.waveInstruction.TextAlign = ContentAlignment.TopCenter;
+            this.waveCounter.Location = new System.Drawing.Point(17, 20);
+            this.waveCounter.Name = "waveCounter";
+            this.waveCounter.Size = new System.Drawing.Size(160, 40);
+            this.waveCounter.TabIndex = 4;
+            this.waveCounter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // waveInstruction
+            // 
             this.waveInstruction.BackColor = System.Drawing.Color.Transparent;
             this.waveInstruction.Font = new System.Drawing.Font("Segoe UI Emoji", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.waveInstruction.Text = "Press [SPACE] to start wave";
             this.waveInstruction.ForeColor = System.Drawing.Color.DarkRed;
-            this.waveInstruction.Location = new System.Drawing.Point(425, 15);
-            //this.waveInstruction
-            #endregion
-
-            #region tmrMoveEnemies
+            this.waveInstruction.Location = new System.Drawing.Point(486, 20);
+            this.waveInstruction.Name = "waveInstruction";
+            this.waveInstruction.Size = new System.Drawing.Size(343, 40);
+            this.waveInstruction.TabIndex = 5;
+            this.waveInstruction.Text = "Press [SPACE] to start wave";
+            this.waveInstruction.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tmrTextCrawl
+            // 
+            this.tmrTextCrawl.Interval = 20;
+            this.tmrTextCrawl.Tick += new System.EventHandler(this.tmrTextCrawl_Tick);
+            // 
+            // tmrSpawnEnemies
+            // 
+            this.tmrSpawnEnemies.Tick += new System.EventHandler(this.tmrSpawnEnemies_Tick);
+            // 
+            // tmrMoveEnemies
+            // 
             this.tmrMoveEnemies.Tick += new System.EventHandler(this.tmrMoveEnemies_Tick);
-            #endregion
-
-            #region btnStoryLine
+            // 
+            // btnStoryLine
+            // 
             this.btnStoryLine.AutoSize = true;
             this.btnStoryLine.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStoryLine.Location = new System.Drawing.Point(630, 617);
+            this.btnStoryLine.Location = new System.Drawing.Point(567, 814);
+            this.btnStoryLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStoryLine.Name = "btnStoryLine";
-            this.btnStoryLine.Size = new System.Drawing.Size(220, 70);
+            this.btnStoryLine.Size = new System.Drawing.Size(251, 93);
             this.btnStoryLine.TabIndex = 3;
             this.btnStoryLine.Text = "Show Storyline";
             this.btnStoryLine.UseVisualStyleBackColor = true;
             this.btnStoryLine.Click += new System.EventHandler(this.btnStoryLine_Click);
-            #endregion
-
-            #region tmrMoveArrows
+            // 
+            // tmrMoveArrows
+            // 
             this.tmrMoveArrows.Interval = 10;
             this.tmrMoveArrows.Tick += new System.EventHandler(this.tmrMoveArrows_Tick);
-            #endregion
-
-            #region tmrSpawnArrows
+            // 
+            // tmrSpawnArrows
+            // 
             this.tmrSpawnArrows.Interval = 5000;
             this.tmrSpawnArrows.Tick += new System.EventHandler(this.tmrSpawnArrows_Tick);
-            #endregion
-
-            #region FrmMain
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            // 
+            // OptionsBtn
+            // 
+            this.OptionsBtn.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.OptionsBtn.Location = new System.Drawing.Point(976, 814);
+            this.OptionsBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OptionsBtn.Name = "OptionsBtn";
+            this.OptionsBtn.Size = new System.Drawing.Size(251, 93);
+            this.OptionsBtn.TabIndex = 6;
+            this.OptionsBtn.Text = "Options";
+            this.OptionsBtn.UseVisualStyleBackColor = true;
+            this.OptionsBtn.Click += new System.EventHandler(this.OptionsBtn_Click);
+            // 
+            // FrmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::TowerDefense_TheRPG.Properties.Resources.title;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1149, 726);
+            this.ClientSize = new System.Drawing.Size(1313, 968);
+            this.Controls.Add(this.OptionsBtn);
             this.Controls.Add(this.btnStoryLine);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblStoryLine);
             this.Controls.Add(this.waveCounter);
             this.Controls.Add(this.waveInstruction);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tower Defense The RPG";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
-            #endregion
+
             }
 
             #endregion
@@ -160,5 +171,6 @@ namespace TowerDefense_TheRPG {
         private Button btnStoryLine;
         private System.Windows.Forms.Timer tmrMoveArrows;
         private System.Windows.Forms.Timer tmrSpawnArrows;
-        }
+        private Button OptionsBtn;
+    }
 }

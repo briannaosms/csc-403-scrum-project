@@ -84,6 +84,8 @@ namespace TowerDefense_TheRPG {
             btnStart.Enabled = false;
             btnStoryLine.Visible = false;
             btnStart.Enabled = false;
+            OptionsBtn.Visible = false;
+            OptionsBtn.Enabled = false;
             lblStoryLine.Visible = false;
             waveCounter.Show();
             arrows = new List<Arrow>();
@@ -111,6 +113,7 @@ namespace TowerDefense_TheRPG {
             if (btnStoryLine.Text.StartsWith("Show")) {
             Storyline();
             BackgroundImage = null;
+            OptionsBtn.Visible = false;
             btnStart.Visible = false;
             btnStoryLine.Text = "Hide Storyline";
             lblStoryLine.Visible = true;
@@ -123,6 +126,7 @@ namespace TowerDefense_TheRPG {
             else {
             BackgroundImage = Resources.title;
             btnStart.Visible = true;
+            OptionsBtn.Visible = true;
             btnStoryLine.Text = "Show Storyline";
             lblStoryLine.Visible = false;
 
@@ -323,7 +327,14 @@ namespace TowerDefense_TheRPG {
         }
         #endregion
 
-
         #endregion
+
+        private void OptionsBtn_Click(object sender, EventArgs e)
+        {
+            Form frmGO = new FrmOptions();
+            frmGO.Show();
+            this.Hide();
+            FormManager.PushToFormStack(frmGO);
+        }
     }
 }
