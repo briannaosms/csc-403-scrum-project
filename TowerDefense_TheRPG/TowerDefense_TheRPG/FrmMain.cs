@@ -2,6 +2,7 @@ using TDRPGCode;
 using System.Diagnostics;
 using TowerDefense_TheRPG.code;
 using TowerDefense_TheRPG.Properties;
+using System;
 
 namespace TowerDefense_TheRPG {
     public partial class FrmMain : Form {
@@ -10,6 +11,7 @@ namespace TowerDefense_TheRPG {
         private Village village;
         private Wave wave = new Wave(50, 3);
         private List<Arrow> arrows;
+        private Weapon weapon;
         private string storyLine;
         private int curStoryLineIndex;
         private Random rand;
@@ -49,6 +51,11 @@ namespace TowerDefense_TheRPG {
             }
         }
 
+        private void SwingSword(object sender, EventArgs e)
+        {
+
+        }
+
         private void tmrMoveEnemies_Tick(object sender, EventArgs e) {
             MoveEnemies();
         }
@@ -80,6 +87,7 @@ namespace TowerDefense_TheRPG {
             lblStoryLine.Visible = false;
             waveCounter.Show();
             arrows = new List<Arrow>();
+            weapon = new Weapon();
 
             // defualting a player to be a knight for right now. selection menu will be made later.
             player = new ClassKnight(Width / 2, Height / 2 + 100);
@@ -140,81 +148,102 @@ namespace TowerDefense_TheRPG {
             curStoryLineIndex = 0;
         }
 
-        private void MoveEnemies() {
-            foreach (var enemy in wave.enemies) {
-            if (enemy.CurHealth <= 0) {
-                continue;
-            }
-            int xDir = 0;
-            int yDir = 0;
-            if (enemy.ControlContainer.Left < Width / 2) {
-                xDir = 1;
-            }
-            else {
-                xDir = -1;
-            }
-            if (enemy.ControlContainer.Top < Height / 2) {
-                yDir = 1;
-            }
-            else {
-                yDir = -1;
-            }
-            enemy.Move(xDir, yDir);
-            if (enemy.DidCollide(player)) {
-                enemy.TakeDamageFrom(player);
-                if (enemy.CurHealth <= 0) {
-                enemy.Hide();
-                int levelBefore = player.Level;
-                player.GainXP(enemy.XPGiven);
-                int levelAfter = player.Level;
-                if (levelBefore == 1 && levelAfter == 2) {
-                    tmrSpawnArrows.Enabled = true;
-                    tmrMoveArrows.Enabled = true;
-                    FireArrows();
-                }
-                else if (levelBefore == 2 && levelAfter == 3) {
-                    tmrSpawnArrows.Interval = 2500;
-                    tmrSpawnArrows.Enabled = true;
-                    FireArrows();
-                }
-            }
-                else {
-                enemy.KnockBack();
-                }
-            }
-            else if (enemy.DidCollide(village)) {
-                village.TakeDamageFrom(enemy);
-          
-                if (village.CurHealth <= 0) {
-                village.Hide(); // defeated
-                wave.SetGameActive(false);
-                Form frmGO = new FrmGameOver();
-                frmGO.Show();
-                this.Hide();
-                FormManager.PushToFormStack(frmGO);
+        private void MoveEnemies()
+        {
+            foreach (var enemy in wave.enemies)
+            {
 
-                // disable timers
-                tmrMoveArrows.Enabled = false;
-                tmrMoveEnemies.Enabled = false;
-                tmrSpawnArrows.Enabled = false;
+                if (enemy.CurHealth <= 0)
+                {
+                    continue;
+                }
+                int xDir = 0;
+                int yDir = 0;
+                if (enemy.ControlContainer.Left < Width / 2)
+                {
+                    xDir = 1;
+                }
+                else
+                {
+                    xDir = -1;
+                }
+                if (enemy.ControlContainer.Top < Height / 2)
+                {
+                    yDir = 1;
+                }
+                else
+                {
+                    yDir = -1;
+                }
+                enemy.Move(xDir, yDir);
+                if (enemy.DidCollide(player))
+                {
+                    enemy.TakeDamageFrom(player);
+                    if (enemy.CurHealth <= 0)
+                    {
+                        enemy.Hide();
+                        int levelBefore = player.Level;
+                        player.GainXP(enemy.XPGiven);
+                        int levelAfter = player.Level;
+                        if (levelBefore == 1 && levelAfter == 2)
+                        {
+                            tmrSpawnArrows.Enabled = true;
+                            tmrMoveArrows.Enabled = true;
+                            FireArrows();
+                        }
+                        else if (levelBefore == 2 && levelAfter == 3)
+                        {
+                            tmrSpawnArrows.Interval = 2500;
+                            tmrSpawnArrows.Enabled = true;
+                            FireArrows();
+                        }
+                    }
+                    else
+                    {
+                        enemy.KnockBack();
+                    }
+                }
+                else if (enemy.DidCollide(village))
+                {
+                    village.TakeDamageFrom(enemy);
 
-                tmrSpawnEnemies.Enabled = false;
+                    if (village.CurHealth <= 0)
+                    {
+                        village.Hide(); // defeated
+                        wave.SetGameActive(false);
+                        Form frmGO = new FrmGameOver();
+                        frmGO.Show();
+                        this.Hide();
+                        FormManager.PushToFormStack(frmGO);
+
+                        // disable timers
+                        tmrMoveArrows.Enabled = false;
+                        tmrMoveEnemies.Enabled = false;
+                        tmrSpawnArrows.Enabled = false;
+
+                        tmrSpawnEnemies.Enabled = false;
+                    }
+                    else
+                    {
+                        enemy.KnockBack();
+                    }
+
+
                 }
-                else {
-                enemy.KnockBack();
-                }
-            }
             }
 
             List<Enemy> enemiesToRemove = new List<Enemy>();
-            foreach (Enemy enemy in wave.enemies) {
-            if (enemy.CurHealth <= 0) {
-                enemiesToRemove.Add(enemy);
-            }
+            foreach (Enemy enemy in wave.enemies)
+            {
+                if (enemy.CurHealth <= 0)
+                {
+                    enemiesToRemove.Add(enemy);
+                }
             }
 
-            foreach (Enemy enemy in enemiesToRemove) {
-            wave.enemies.Remove(enemy);
+            foreach (Enemy enemy in enemiesToRemove)
+            {
+                wave.enemies.Remove(enemy);
             }
         }
 
@@ -239,6 +268,27 @@ namespace TowerDefense_TheRPG {
             foreach (Arrow arrow in arrowsToRemove) {
             arrows.Remove(arrow);
             Controls.Remove(arrow.ControlCharacter);
+            }
+        }
+
+        private void MoveSword()
+        {
+
+            foreach (Enemy enemy in wave.enemies)
+            {
+                if (weapon.DidCollide(enemy))
+                {
+                    enemy.TakeDamage(0.1f);
+                    if (enemy.CurHealth <= 0)
+                    {
+                        enemy.Hide();
+                        player.GainXP(enemy.XPGiven);
+                    }
+                    else
+                    {
+                        enemy.KnockBack();
+                    }
+                }
             }
         }
 
