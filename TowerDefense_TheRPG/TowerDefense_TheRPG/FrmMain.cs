@@ -188,6 +188,7 @@ namespace TowerDefense_TheRPG {
                         enemy.Hide();
                         int levelBefore = player.Level;
                         player.GainXP(enemy.XPGiven);
+                        player.Money += enemy.MoneyGiven;
                         int levelAfter = player.Level;
                         if (levelBefore == 1 && levelAfter == 2)
                         {
@@ -201,6 +202,7 @@ namespace TowerDefense_TheRPG {
                             tmrSpawnArrows.Enabled = true;
                             FireArrows();
                         }
+                        
                     }
                     else
                     {
@@ -234,6 +236,7 @@ namespace TowerDefense_TheRPG {
 
 
                 }
+
             }
 
             List<Enemy> enemiesToRemove = new List<Enemy>();
@@ -248,7 +251,40 @@ namespace TowerDefense_TheRPG {
             foreach (Enemy enemy in enemiesToRemove)
             {
                 wave.enemies.Remove(enemy);
+                //Opens a shop when no more enemies are alive
+                if (wave.enemies.Count == 0)
+                {
+                    wave.SetGameActive(false);
+                    Form frmShop = new FrmShop(village, player, this);
+                    frmShop.Show();
+                    this.Hide();
+                    FormManager.PushToFormStack(frmShop);
+
+                    // disable timers
+                    tmrMoveArrows.Enabled = false;
+                    tmrMoveEnemies.Enabled = false;
+                    tmrSpawnArrows.Enabled = false;
+
+                    tmrSpawnEnemies.Enabled = false;
+
+
+                }
             }
+            
+
+        }
+
+        public void StartWave()
+        {
+            wave.SetGameActive(true);
+            this.Show();
+            FormManager.PushToFormStack(this);
+            tmrSpawnEnemies.Enabled = true;
+            wave.EnableNextWaveSpawning();
+            tmrMoveArrows.Enabled = true;
+            tmrMoveEnemies.Enabled = true;
+            tmrSpawnArrows.Enabled = true;
+
         }
 
         private void MoveArrows() {

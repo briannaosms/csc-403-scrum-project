@@ -7,7 +7,7 @@
         /// Amount of money the player has. Currently this is not being
         /// used but you could add this as a feature.
         /// </summary>
-        public int Money { get; private set; }
+        public int Money { get; set; }
 
         /// <summary>
         /// Current amount of experience. You gain experience by defeating
@@ -40,14 +40,14 @@
         /// <param name="y">Initial y position of player</param>
         public Player(int x, int y) : base("player", x, y, 50, 100) {
             SetMaxHealth(1.0f);
-            Money = 0;
+            Money = 100;
             Attack = 0.15f;
             MoveSpeed = 15;
             Level = 1;
             XP = 0;
-            shopAttackCounter = 0;
-            shopHealthCounter = 0;
-            shopSpeedCounter = 0;
+            shopAttackCounter = 1;
+            shopHealthCounter = 1;
+            shopSpeedCounter = 1;
             ChangeCharacterPic("playerL" + Level);
         }
 
@@ -114,6 +114,10 @@
                 MoveSpeed += speedIncrement;
                 shopSpeedCounter++;
             }
+        }
+        public void FullHeal()
+        {
+            SetMaxHealth(MaxHealth);
         }
 
         public void buyUpgrade(int price)
