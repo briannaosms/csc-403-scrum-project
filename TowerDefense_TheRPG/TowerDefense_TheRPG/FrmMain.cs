@@ -11,6 +11,7 @@ namespace TowerDefense_TheRPG {
         private Village village;
         private Wave wave = new Wave(50, 3);
         private List<Arrow> arrows;
+        private MoneyPile moneyPile;
         private Weapon weapon;
         private string storyLine;
         private int curStoryLineIndex;
@@ -65,6 +66,12 @@ namespace TowerDefense_TheRPG {
         private void tmrMoveArrows_Tick(object sender, EventArgs e) {
             MoveArrows();
         }
+        private void tmrLootSpawned_Tick(object sender, EventArgs e)
+        {
+            //This is only temporary until a better way presents itself
+            moneyPile.SetValue(15);
+            GrabMoney();
+        }
 
         // form
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
@@ -91,6 +98,9 @@ namespace TowerDefense_TheRPG {
             arrows = new List<Arrow>();
             weapon = new Weapon();
 
+            int[] randWidths = new int[] { Width / 2 - 80, Width*2 - 80};
+            int[] randHeights = new int[] { Height / 2 - 50, Height*2 - 50 };
+            rand.Next();
             // defualting a player to be a knight for right now. selection menu will be made later.
             player = new ClassKnight(Width / 2, Height / 2 + 100);
             village = new Village(Width / 2 - 80, Height / 2 - 50);
@@ -188,7 +198,8 @@ namespace TowerDefense_TheRPG {
                         enemy.Hide();
                         int levelBefore = player.Level;
                         player.GainXP(enemy.XPGiven);
-                        player.Money += enemy.MoneyGiven;
+                        //player.Money += enemy.MoneyGiven;
+                        tmrLootSpawned.Enabled = true;
                         int levelAfter = player.Level;
                         if (levelBefore == 1 && levelAfter == 2)
                         {
@@ -272,6 +283,16 @@ namespace TowerDefense_TheRPG {
             }
             
 
+        }
+
+        public void GrabMoney()
+        {
+            moneyPile.Show();
+            if (moneyPile.DidCollide(player))
+            {
+                moneyPile.Hide();
+                player.Money += moneyPile.Value;
+            }
         }
 
         public void StartWave()
@@ -361,9 +382,6 @@ namespace TowerDefense_TheRPG {
                 break;
             }
         }
-        #endregion
-
-        #endregion
 
         private void OptionsBtn_Click(object sender, EventArgs e)
         {
@@ -470,11 +488,14 @@ namespace TowerDefense_TheRPG {
 
 
         }
-
         private void WindowedBtn_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Normal;
             FormBorderStyle = FormBorderStyle.Sizable;
         }
+        
+        #endregion
+        #endregion
     }
+
 }
