@@ -7,17 +7,33 @@
 
         public Control ControlWeapon { get; private set; }
 
-        public Weapon()
+        public Weapon(string className )
         {
-            ControlWeapon = new PictureBox()
+            if (className.Equals("knight"))
             {
-                BackgroundImage = ControlManager.ResMan.GetObject("sword.png") as Bitmap,
-                BackgroundImageLayout = ImageLayout.Stretch,
-                Width = 20,
-                Height = 20,
-                BackColor = Color.Transparent,
-            };
-            ControlManager.Form.Controls.Add(ControlWeapon);
+                ControlWeapon = new PictureBox()
+                {
+                    BackgroundImage = ControlManager.ResMan.GetObject("sword.png") as Bitmap,
+                    BackgroundImageLayout = ImageLayout.Stretch,
+                    Width = 20,
+                    Height = 20,
+                    BackColor = Color.Transparent,
+                };
+                ControlManager.Form.Controls.Add(ControlWeapon);
+            }
+            else
+            {
+                ControlWeapon = new PictureBox()
+                {
+                    BackgroundImage = ControlManager.ResMan.GetObject("fireball.png") as Bitmap,
+                    BackgroundImageLayout = ImageLayout.Stretch,
+                    Width = 20,
+                    Height = 20,
+                    BackColor = Color.Transparent,
+                };
+                ControlManager.Form.Controls.Add(ControlWeapon);
+            }
+
 
         }
 

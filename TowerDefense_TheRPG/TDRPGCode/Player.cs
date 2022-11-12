@@ -79,6 +79,8 @@
             }
         }
 
+        public abstract void DoAttack(float x, float y, Weapon weapon);
+
         public abstract void AbilityAOE();
 
         public abstract void AbilityMultishot();

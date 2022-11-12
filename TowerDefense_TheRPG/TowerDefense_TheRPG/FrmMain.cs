@@ -3,6 +3,7 @@ using System.Diagnostics;
 using TowerDefense_TheRPG.code;
 using TowerDefense_TheRPG.Properties;
 using System;
+using System.Xml.Serialization;
 
 namespace TowerDefense_TheRPG {
     public partial class FrmMain : Form {
@@ -52,10 +53,6 @@ namespace TowerDefense_TheRPG {
             }
         }
 
-        private void SwingSword(object sender, EventArgs e)
-        {
-
-        }
 
         private void tmrMoveEnemies_Tick(object sender, EventArgs e) {
             MoveEnemies();
@@ -84,6 +81,13 @@ namespace TowerDefense_TheRPG {
             }  
         }
 
+        private void Form1_MouseClick(object sender, MouseEventArgs e) 
+        {
+            MoveWeapon(e.X, e.Y);        
+        }
+
+
+
         // buttons
         private void btnStart_Click(object sender, EventArgs e) {
             BackgroundImage = null;
@@ -96,13 +100,13 @@ namespace TowerDefense_TheRPG {
             lblStoryLine.Visible = false;
             waveCounter.Show();
             arrows = new List<Arrow>();
-            weapon = new Weapon();
+            //weapon = new Weapon();
 
             int[] randWidths = new int[] { Width / 2 - 80, Width*2 - 80};
             int[] randHeights = new int[] { Height / 2 - 50, Height*2 - 50 };
             rand.Next();
             // defualting a player to be a knight for right now. selection menu will be made later.
-            player = new ClassKnight(Width / 2, Height / 2 + 100);
+            player = new ClassKnight(Width / 2, Height / 2 + 100, new Weapon("knight"));
             village = new Village(Width / 2 - 80, Height / 2 - 50);
             village.ControlContainer.SendToBack();
             tmrMoveEnemies.Enabled = true;
@@ -332,8 +336,9 @@ namespace TowerDefense_TheRPG {
             }
         }
 
-        private void MoveSword()
+        private void MoveWeapon(float x, float y)
         {
+            player.DoAttack(x, y, weapon);
 
             foreach (Enemy enemy in wave.enemies)
             {

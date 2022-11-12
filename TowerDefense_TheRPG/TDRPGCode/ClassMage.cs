@@ -10,6 +10,11 @@ namespace TowerDefense_TheRPG.code {
         public ClassMage(int x, int y) : base(x, y) {
         }
 
+        public override void DoAttack(float x, float y, Weapon weapon)
+        {
+            throw new NotImplementedException();
+        }
+
         public override void AbilityAOE() {
 
         }
@@ -21,5 +26,6 @@ namespace TowerDefense_TheRPG.code {
         public override void AbilityKnockback() {
 
         }
+
     }
 }

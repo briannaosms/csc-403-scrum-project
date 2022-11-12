@@ -37,7 +37,7 @@ namespace TowerDefense_TheRPG {
             this.btnStoryLine = new System.Windows.Forms.Button();
             this.tmrMoveArrows = new System.Windows.Forms.Timer(this.components);
             this.tmrSpawnArrows = new System.Windows.Forms.Timer(this.components);
-            this.tmrLootSpawned = new System.Windows.Forms. Timer(this.components);
+            this.tmrLootSpawned = new System.Windows.Forms.Timer(this.components);
             this.OptionsBtn = new System.Windows.Forms.Button();
             this.VolumeUpBtn = new System.Windows.Forms.Button();
             this.VolumeDownBtn = new System.Windows.Forms.Button();
@@ -135,9 +135,9 @@ namespace TowerDefense_TheRPG {
             // 
             this.tmrSpawnArrows.Interval = 5000;
             this.tmrSpawnArrows.Tick += new System.EventHandler(this.tmrSpawnArrows_Tick);
-            //
-            //tmrLootSpawned
-            //
+            // 
+            // tmrLootSpawned
+            // 
             this.tmrLootSpawned.Interval = 1;
             this.tmrLootSpawned.Tick += new System.EventHandler(this.tmrLootSpawned_Tick);
             // 
@@ -302,6 +302,7 @@ namespace TowerDefense_TheRPG {
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tower Defense The RPG";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.Vol1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vol2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vol3)).EndInit();
