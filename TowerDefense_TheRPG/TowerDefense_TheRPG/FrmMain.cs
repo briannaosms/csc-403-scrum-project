@@ -331,10 +331,114 @@ namespace TowerDefense_TheRPG {
 
         private void OptionsBtn_Click(object sender, EventArgs e)
         {
-            Form frmGO = new FrmOptions();
-            frmGO.Show();
-            this.Hide();
-            FormManager.PushToFormStack(frmGO);
+           if (OptionsBtn.Text.StartsWith("Options"))
+            {
+                OptionsBtn.Text = "Return to Main Menu";
+                btnStart.Visible = false;
+                btnStart.Enabled = false;
+                VolumeUpBtn.Visible= true;
+                VolumeUpBtn.Enabled = true;
+                VolumeDownBtn.Visible= true;
+                VolumeUpBtn.Enabled = true;
+                Vol1.Visible= true;
+                Vol2.Visible= true;
+                Vol3.Visible= true;
+                Vol4.Visible= true;
+                Vol5.Visible= true;
+                FullScreen.Visible= true;
+                FullScreen.Enabled= true;
+                WindowedBtn.Visible= true;
+                WindowedBtn.Enabled= true;
+                VolName.Visible= true;
+                btnStoryLine.Visible = false;
+                tmrSpawnEnemies.Enabled = false;
+                tmrMoveEnemies.Enabled = false;
+                tmrMoveArrows.Enabled = false;
+                tmrTextCrawl.Enabled = false;
+
+            }
+            else
+            {
+                OptionsBtn.Text = "Options";
+                VolumeUpBtn.Visible = false;
+                VolumeUpBtn.Enabled = false;
+                VolumeDownBtn.Visible = false;
+                VolumeDownBtn.Enabled = false; 
+                Vol1.Visible = false;
+                Vol2.Visible = false;
+                Vol3.Visible = false;
+                Vol4.Visible = false;
+                Vol5.Visible = false;
+                FullScreen.Visible = false;
+                FullScreen.Enabled = false;
+                WindowedBtn.Visible = false;
+                WindowedBtn.Enabled = false;
+                VolName.Visible = false;
+                btnStart.Visible = true;
+                btnStart.Enabled = true;
+                btnStoryLine.Visible = true;
+            }
+        }
+        private void VolUp_Click(object sender, EventArgs e)
+        {
+            if (Vol1.BackColor == Color.Gray)
+            {
+                Vol1.BackColor = Color.Blue;
+            }
+            else if (Vol2.BackColor == Color.Gray)
+            {
+                Vol2.BackColor = Color.Blue;
+            }
+            else if (Vol3.BackColor == Color.Gray)
+            {
+                Vol3.BackColor = Color.Blue;
+            }
+            else if (Vol4.BackColor == Color.Gray)
+            {
+                Vol4.BackColor = Color.Blue;
+            }
+            else if (Vol5.BackColor == Color.Gray)
+            {
+                Vol5.BackColor = Color.Blue;
+            }
+
+        }
+        private void VolDown_Click(object sender, EventArgs e)
+        {
+
+            if (Vol5.BackColor == Color.Blue)
+            {
+                Vol5.BackColor = Color.Gray;
+            }
+            else if (Vol4.BackColor == Color.Blue)
+            {
+                Vol4.BackColor = Color.Gray;
+            }
+            else if (Vol3.BackColor == Color.Blue)
+            {
+                Vol3.BackColor = Color.Gray;
+            }
+            else if (Vol2.BackColor == Color.Blue)
+            {
+                Vol2.BackColor = Color.Gray;
+            }
+            else if (Vol1.BackColor == Color.Blue)
+            {
+                Vol1.BackColor = Color.Gray;
+            }
+        }
+        private void FullScreen_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.None;
+
+
+        }
+
+        private void WindowedBtn_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+            FormBorderStyle = FormBorderStyle.Sizable;
         }
     }
 }
