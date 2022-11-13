@@ -39,19 +39,19 @@ namespace TowerDefense_TheRPG.code
                 BackgroundImageLayout = ImageLayout.Stretch,
                 Width = 30,
                 Height = 30,
-                BackColor = Color.Transparent,
+                BackColor = Color.Transparent
             };
             ControlManager.Form.Controls.Add(ControlCharacter);
         }
 
         /// <summary>
-        /// Determines if the arrow collided with a <see cref="Player">character</see> object
+        /// Determines if the arrow collided with a <see cref="Character">character</see> object
         /// </summary>
-        /// <param name="plyr">The <see cref="Player">character</see> object to check collision with</param>
+        /// <param name="chr">The <see cref="Character">character</see> object to check collision with</param>
         /// <returns>True if collided, false otherwise</returns>
-        public bool DidCollide(Player plyr)
+        public bool DidCollide(Character chr)
         {
-            return ControlCharacter.Bounds.IntersectsWith(plyr.ControlContainer.Bounds);
+            return ControlCharacter.Bounds.IntersectsWith(chr.ControlContainer.Bounds);
         }
 
         public void SetValue(int value)

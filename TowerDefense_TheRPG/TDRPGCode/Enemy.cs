@@ -33,7 +33,7 @@
             balloon.SetMaxHealth(0.1f);
             balloon.Attack = 0.5f;
             balloon.XPGiven = 1;
-            //balloon.MoneyGiven = 10;
+            balloon.MoneyGiven = 10;
             return balloon;
         }
 
@@ -49,7 +49,7 @@
             balloon.SetMaxHealth(0.5f);
             balloon.Attack = 0.3f;
             balloon.XPGiven = 3;
-            //balloon.MoneyGiven = 15;
+            balloon.MoneyGiven = 15;
             return balloon;
         }
 
@@ -66,7 +66,7 @@
             balloon.SetMaxHealth(1.0f);
             balloon.Attack = 1f;
             balloon.XPGiven = 7;
-            //balloon.MoneyGiven = 35;
+            balloon.MoneyGiven = 35;
             return balloon;
         }
 
@@ -82,7 +82,7 @@
             balloon.SetMaxHealth(0.2f);
             balloon.Attack = 0.1f;
             balloon.XPGiven = 5;
-            //balloon.MoneyGiven = 25;
+            balloon.MoneyGiven = 25;
             return balloon;
         }
     }

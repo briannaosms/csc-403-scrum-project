@@ -139,7 +139,7 @@ namespace TowerDefense_TheRPG {
             // tmrLootSpawned
             // 
             this.tmrLootSpawned.Interval = 1;
-            this.tmrLootSpawned.Tick += new System.EventHandler(this.tmrLootSpawned_Tick);
+            //this.tmrLootSpawned.Tick += new System.EventHandler(this.tmrLootSpawned_Tick);
             // 
             // OptionsBtn
             // 

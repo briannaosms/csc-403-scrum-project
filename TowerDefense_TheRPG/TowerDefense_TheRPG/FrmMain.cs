@@ -12,7 +12,6 @@ namespace TowerDefense_TheRPG {
         private Village village;
         private Wave wave = new Wave(50, 3);
         private List<Arrow> arrows;
-        private MoneyPile moneyPile;
         private Weapon weapon;
         private string storyLine;
         private int curStoryLineIndex;
@@ -63,12 +62,10 @@ namespace TowerDefense_TheRPG {
         private void tmrMoveArrows_Tick(object sender, EventArgs e) {
             MoveArrows();
         }
-        private void tmrLootSpawned_Tick(object sender, EventArgs e)
+       /* private void tmrLootSpawned_Tick(object sender, EventArgs e)
         {
-            //This is only temporary until a better way presents itself
-            moneyPile.SetValue(15);
             GrabMoney();
-        }
+        }*/
 
         // form
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
@@ -200,6 +197,7 @@ namespace TowerDefense_TheRPG {
                     if (enemy.CurHealth <= 0)
                     {
                         enemy.Hide();
+                        GrabMoney(enemy.X, enemy.Y, enemy.MoneyGiven);
                         int levelBefore = player.Level;
                         player.GainXP(enemy.XPGiven);
                         //player.Money += enemy.MoneyGiven;
@@ -289,12 +287,15 @@ namespace TowerDefense_TheRPG {
 
         }
 
-        public void GrabMoney()
+        public void GrabMoney(int X, int Y, int value)
         {
-            moneyPile.Show();
-            if (moneyPile.DidCollide(player))
+
+           MoneyPile moneyPile = new MoneyPile(X, Y, value);
+           moneyPile.Show();
+            Debug.WriteLine(moneyPile.ToString());
+           if (moneyPile.DidCollide(player))
             {
-                moneyPile.Hide();
+                //moneyPile.Hide();
                 player.Money += moneyPile.Value;
             }
         }
