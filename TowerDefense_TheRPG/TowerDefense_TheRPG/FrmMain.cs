@@ -16,6 +16,10 @@ namespace TowerDefense_TheRPG {
         private string storyLine;
         private int curStoryLineIndex;
         private Random rand;
+        private int[] randWidths;
+        private int[] randHeights;
+        private int chosenRandWidth;
+        private int chosenRandHeight;
         #endregion
 
         #region Methods
@@ -73,15 +77,18 @@ namespace TowerDefense_TheRPG {
                 tmrSpawnEnemies.Enabled = true;
                 wave.EnableNextWaveSpawning();
             }
+            else if(e.KeyCode == Keys.Escape) {
+                Application.Exit();
+            }
             else {
                 PlayerMove(e.KeyCode);
             }  
         }
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e) 
-        {
-            MoveWeapon(e.X, e.Y);        
-        }
+        //private void Form1_MouseClick(object sender, MouseEventArgs e) 
+        //{
+        //    MoveWeapon(e.X, e.Y);        
+        //}
 
 
 
@@ -99,12 +106,14 @@ namespace TowerDefense_TheRPG {
             arrows = new List<Arrow>();
             //weapon = new Weapon();
 
-            int[] randWidths = new int[] { Width / 2 - 80, Width*2 - 80};
-            int[] randHeights = new int[] { Height / 2 - 50, Height*2 - 50 };
-            rand.Next();
+            randWidths = new int[] { Width / 2 - 80, Width / 4 - 80, Width / 2 + 600 };
+            randHeights = new int[] { Height / 2 - 50, Height / 2 + 100, Height / 2 + 300 };
+            chosenRandWidth = randWidths[rand.Next(3)];
+            chosenRandHeight = randHeights[rand.Next(3)];
             // defualting a player to be a knight for right now. selection menu will be made later.
             player = new ClassKnight(Width / 2, Height / 2 + 100, new Weapon("knight"));
-            village = new Village(Width / 2 - 80, Height / 2 - 50);
+            //village = new Village(Width / 2 - 80, Height / 2 - 50);
+            village = new Village(chosenRandWidth, chosenRandHeight);
             village.ControlContainer.SendToBack();
             tmrMoveEnemies.Enabled = true;
             tmrMoveArrows.Enabled = true;
@@ -200,7 +209,7 @@ namespace TowerDefense_TheRPG {
                         GrabMoney(enemy.X, enemy.Y, enemy.MoneyGiven);
                         int levelBefore = player.Level;
                         player.GainXP(enemy.XPGiven);
-                        //player.Money += enemy.MoneyGiven;
+                        player.Money += enemy.MoneyGiven;
                         tmrLootSpawned.Enabled = true;
                         int levelAfter = player.Level;
                         if (levelBefore == 1 && levelAfter == 2)

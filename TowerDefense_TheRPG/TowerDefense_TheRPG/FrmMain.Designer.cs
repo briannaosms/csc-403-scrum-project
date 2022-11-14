@@ -70,7 +70,7 @@ namespace TowerDefense_TheRPG {
             // 
             this.btnStart.AutoSize = true;
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStart.Location = new System.Drawing.Point(131, 617);
+            this.btnStart.Location = new System.Drawing.Point(400, 620);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(220, 70);
             this.btnStart.TabIndex = 1;
@@ -94,7 +94,7 @@ namespace TowerDefense_TheRPG {
             this.waveInstruction.BackColor = System.Drawing.Color.Transparent;
             this.waveInstruction.Font = new System.Drawing.Font("Segoe UI Emoji", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.waveInstruction.ForeColor = System.Drawing.Color.DarkRed;
-            this.waveInstruction.Location = new System.Drawing.Point(425, 15);
+            this.waveInstruction.Location = new System.Drawing.Point(700, 15);
             this.waveInstruction.Name = "waveInstruction";
             this.waveInstruction.Size = new System.Drawing.Size(300, 30);
             this.waveInstruction.TabIndex = 5;
@@ -118,7 +118,7 @@ namespace TowerDefense_TheRPG {
             // 
             this.btnStoryLine.AutoSize = true;
             this.btnStoryLine.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStoryLine.Location = new System.Drawing.Point(496, 610);
+            this.btnStoryLine.Location = new System.Drawing.Point(750, 620);
             this.btnStoryLine.Name = "btnStoryLine";
             this.btnStoryLine.Size = new System.Drawing.Size(220, 70);
             this.btnStoryLine.TabIndex = 3;
@@ -144,7 +144,7 @@ namespace TowerDefense_TheRPG {
             // OptionsBtn
             // 
             this.OptionsBtn.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.OptionsBtn.Location = new System.Drawing.Point(854, 610);
+            this.OptionsBtn.Location = new System.Drawing.Point(1110, 620);
             this.OptionsBtn.Name = "OptionsBtn";
             this.OptionsBtn.Size = new System.Drawing.Size(220, 70);
             this.OptionsBtn.TabIndex = 6;
@@ -302,7 +302,9 @@ namespace TowerDefense_TheRPG {
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tower Defense The RPG";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+            //this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+            WindowState = FormWindowState.Maximized;
+            FormBorderStyle = FormBorderStyle.None;
             ((System.ComponentModel.ISupportInitialize)(this.Vol1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vol2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vol3)).EndInit();
