@@ -111,6 +111,24 @@ namespace TowerDefense_TheRPG.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream knifesharpener1 {
+            get {
+                return ResourceManager.GetStream("knifesharpener1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Lay_Low {
+            get {
+                return ResourceManager.GetStream("Lay_Low", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap orangeballoon {
@@ -157,6 +175,15 @@ namespace TowerDefense_TheRPG.Properties {
             get {
                 object obj = ResourceManager.GetObject("playerL3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream pop {
+            get {
+                return ResourceManager.GetStream("pop", resourceCulture);
             }
         }
         

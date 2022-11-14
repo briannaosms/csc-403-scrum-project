@@ -64,7 +64,7 @@
 
             balloon.MoveSpeed = 3;
             balloon.SetMaxHealth(1.0f);
-            balloon.Attack = 1f;
+            balloon.Attack = 0.5f;
             balloon.XPGiven = 7;
             balloon.MoneyGiven = 35;
             return balloon;

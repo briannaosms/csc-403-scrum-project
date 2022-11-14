@@ -4,6 +4,7 @@ using TowerDefense_TheRPG.code;
 using TowerDefense_TheRPG.Properties;
 using System;
 using System.Xml.Serialization;
+using System.Media;
 
 namespace TowerDefense_TheRPG {
     public partial class FrmMain : Form {
@@ -20,6 +21,10 @@ namespace TowerDefense_TheRPG {
         private int[] randHeights;
         private int chosenRandWidth;
         private int chosenRandHeight;
+        //SoundPlayer musicPlayer = new SoundPlayer(Properties.Resources.Lay_Low);
+        SoundPlayer attackPlayer = new SoundPlayer(Properties.Resources.knifesharpener1);
+        SoundPlayer popPLayer  = new SoundPlayer(Properties.Resources.pop);
+        //bool bgm;
         #endregion
 
         #region Methods
@@ -48,7 +53,7 @@ namespace TowerDefense_TheRPG {
         }
         private void tmrSpawnEnemies_Tick(object sender, EventArgs e) {
             // If spawn conditions are met, then spawn new wave and update UI.
-            if(wave.IsSpawnConditionMet()) {
+            if (wave.IsSpawnConditionMet()) {
                 waveInstruction.Visible = false;
                 wave.SpawnNewWave(Height, Width);
                 waveCounter.Text = "Wave: " + wave.GetWaveNumber();
@@ -94,6 +99,8 @@ namespace TowerDefense_TheRPG {
 
         // buttons
         private void btnStart_Click(object sender, EventArgs e) {
+            
+            //musicPlayer.PlayLooping();
             BackgroundImage = null;
             btnStart.Visible = false;
             btnStart.Enabled = false;
@@ -183,7 +190,7 @@ namespace TowerDefense_TheRPG {
                 }
                 int xDir = 0;
                 int yDir = 0;
-                if (enemy.ControlContainer.Left < Width / 2)
+                if (enemy.ControlContainer.Left < chosenRandWidth)
                 {
                     xDir = 1;
                 }
@@ -191,7 +198,7 @@ namespace TowerDefense_TheRPG {
                 {
                     xDir = -1;
                 }
-                if (enemy.ControlContainer.Top < Height / 2)
+                if (enemy.ControlContainer.Top < chosenRandHeight)
                 {
                     yDir = 1;
                 }
@@ -202,9 +209,14 @@ namespace TowerDefense_TheRPG {
                 enemy.Move(xDir, yDir);
                 if (enemy.DidCollide(player))
                 {
+                    attackPlayer.Play();
+                    //bgm = false;
+                    player.TakeDamageFrom(enemy);
                     enemy.TakeDamageFrom(player);
                     if (enemy.CurHealth <= 0)
                     {
+                        popPLayer.Play();
+                        //bgm = false;
                         enemy.Hide();
                         GrabMoney(enemy.X, enemy.Y, enemy.MoneyGiven);
                         int levelBefore = player.Level;
@@ -212,19 +224,35 @@ namespace TowerDefense_TheRPG {
                         player.Money += enemy.MoneyGiven;
                         tmrLootSpawned.Enabled = true;
                         int levelAfter = player.Level;
-                        if (levelBefore == 1 && levelAfter == 2)
+                        if (levelBefore == 2 && levelAfter == 3)
                         {
                             tmrSpawnArrows.Enabled = true;
                             tmrMoveArrows.Enabled = true;
                             FireArrows();
                         }
-                        else if (levelBefore == 2 && levelAfter == 3)
+                        else if (levelBefore == 3 && levelAfter == 4)
                         {
                             tmrSpawnArrows.Interval = 2500;
                             tmrSpawnArrows.Enabled = true;
                             FireArrows();
                         }
                         
+                    }
+                    if (player.CurHealth <= 0)
+                    {
+                        village.Hide(); // defeated
+                        wave.SetGameActive(false);
+                        Form frmGO = new FrmGameOver();
+                        frmGO.Show();
+                        this.Hide();
+                        FormManager.PushToFormStack(frmGO);
+
+                        // disable timers
+                        tmrMoveArrows.Enabled = false;
+                        tmrMoveEnemies.Enabled = false;
+                        tmrSpawnArrows.Enabled = false;
+
+                        tmrSpawnEnemies.Enabled = false;
                     }
                     else
                     {

@@ -39,7 +39,7 @@
         /// <param name="x">Initial x position of player</param>
         /// <param name="y">Initial y position of player</param>
         public Player(int x, int y) : base("player", x, y, 50, 100) {
-            SetMaxHealth(1.0f);
+            SetMaxHealth(10.0f);
             Money = 100;
             Attack = 0.15f;
             MoveSpeed = 15;
