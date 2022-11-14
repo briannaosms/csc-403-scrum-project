@@ -61,18 +61,20 @@ namespace TowerDefense_TheRPG {
             this.lblStoryLine.BackColor = System.Drawing.Color.Transparent;
             this.lblStoryLine.Font = new System.Drawing.Font("Segoe UI Emoji", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblStoryLine.ForeColor = System.Drawing.Color.White;
-            this.lblStoryLine.Location = new System.Drawing.Point(8, 8);
+            this.lblStoryLine.Location = new System.Drawing.Point(9, 11);
             this.lblStoryLine.Name = "lblStoryLine";
-            this.lblStoryLine.Size = new System.Drawing.Size(1128, 616);
+            this.lblStoryLine.Size = new System.Drawing.Size(1289, 821);
             this.lblStoryLine.TabIndex = 0;
+            this.lblStoryLine.Click += new System.EventHandler(this.lblStoryLine_Click);
             // 
             // btnStart
             // 
             this.btnStart.AutoSize = true;
             this.btnStart.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStart.Location = new System.Drawing.Point(400, 620);
+            this.btnStart.Location = new System.Drawing.Point(457, 827);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(220, 70);
+            this.btnStart.Size = new System.Drawing.Size(251, 93);
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "Play";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -83,9 +85,9 @@ namespace TowerDefense_TheRPG {
             this.waveCounter.BackColor = System.Drawing.Color.Transparent;
             this.waveCounter.Font = new System.Drawing.Font("Segoe UI Emoji", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.waveCounter.ForeColor = System.Drawing.Color.White;
-            this.waveCounter.Location = new System.Drawing.Point(15, 15);
+            this.waveCounter.Location = new System.Drawing.Point(17, 20);
             this.waveCounter.Name = "waveCounter";
-            this.waveCounter.Size = new System.Drawing.Size(140, 30);
+            this.waveCounter.Size = new System.Drawing.Size(160, 40);
             this.waveCounter.TabIndex = 4;
             this.waveCounter.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -94,9 +96,9 @@ namespace TowerDefense_TheRPG {
             this.waveInstruction.BackColor = System.Drawing.Color.Transparent;
             this.waveInstruction.Font = new System.Drawing.Font("Segoe UI Emoji", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.waveInstruction.ForeColor = System.Drawing.Color.DarkRed;
-            this.waveInstruction.Location = new System.Drawing.Point(700, 15);
+            this.waveInstruction.Location = new System.Drawing.Point(800, 20);
             this.waveInstruction.Name = "waveInstruction";
-            this.waveInstruction.Size = new System.Drawing.Size(300, 30);
+            this.waveInstruction.Size = new System.Drawing.Size(343, 40);
             this.waveInstruction.TabIndex = 5;
             this.waveInstruction.Text = "Press [SPACE] to start wave";
             this.waveInstruction.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -118,9 +120,10 @@ namespace TowerDefense_TheRPG {
             // 
             this.btnStoryLine.AutoSize = true;
             this.btnStoryLine.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnStoryLine.Location = new System.Drawing.Point(750, 620);
+            this.btnStoryLine.Location = new System.Drawing.Point(857, 827);
+            this.btnStoryLine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStoryLine.Name = "btnStoryLine";
-            this.btnStoryLine.Size = new System.Drawing.Size(220, 70);
+            this.btnStoryLine.Size = new System.Drawing.Size(251, 93);
             this.btnStoryLine.TabIndex = 3;
             this.btnStoryLine.Text = "Show Storyline";
             this.btnStoryLine.UseVisualStyleBackColor = true;
@@ -139,14 +142,14 @@ namespace TowerDefense_TheRPG {
             // tmrLootSpawned
             // 
             this.tmrLootSpawned.Interval = 1;
-            //this.tmrLootSpawned.Tick += new System.EventHandler(this.tmrLootSpawned_Tick);
             // 
             // OptionsBtn
             // 
             this.OptionsBtn.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.OptionsBtn.Location = new System.Drawing.Point(1110, 620);
+            this.OptionsBtn.Location = new System.Drawing.Point(1269, 827);
+            this.OptionsBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.OptionsBtn.Name = "OptionsBtn";
-            this.OptionsBtn.Size = new System.Drawing.Size(220, 70);
+            this.OptionsBtn.Size = new System.Drawing.Size(251, 93);
             this.OptionsBtn.TabIndex = 6;
             this.OptionsBtn.Text = "Options";
             this.OptionsBtn.UseVisualStyleBackColor = true;
@@ -155,10 +158,9 @@ namespace TowerDefense_TheRPG {
             // VolumeUpBtn
             // 
             this.VolumeUpBtn.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VolumeUpBtn.Location = new System.Drawing.Point(167, 283);
-            this.VolumeUpBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VolumeUpBtn.Location = new System.Drawing.Point(191, 377);
             this.VolumeUpBtn.Name = "VolumeUpBtn";
-            this.VolumeUpBtn.Size = new System.Drawing.Size(39, 59);
+            this.VolumeUpBtn.Size = new System.Drawing.Size(45, 79);
             this.VolumeUpBtn.TabIndex = 0;
             this.VolumeUpBtn.Text = "↑";
             this.VolumeUpBtn.UseVisualStyleBackColor = true;
@@ -168,10 +170,9 @@ namespace TowerDefense_TheRPG {
             // VolumeDownBtn
             // 
             this.VolumeDownBtn.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.VolumeDownBtn.Location = new System.Drawing.Point(385, 283);
-            this.VolumeDownBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VolumeDownBtn.Location = new System.Drawing.Point(440, 377);
             this.VolumeDownBtn.Name = "VolumeDownBtn";
-            this.VolumeDownBtn.Size = new System.Drawing.Size(39, 59);
+            this.VolumeDownBtn.Size = new System.Drawing.Size(45, 79);
             this.VolumeDownBtn.TabIndex = 1;
             this.VolumeDownBtn.Text = "↓";
             this.VolumeDownBtn.UseVisualStyleBackColor = true;
@@ -181,10 +182,9 @@ namespace TowerDefense_TheRPG {
             // Vol1
             // 
             this.Vol1.BackColor = System.Drawing.Color.Gray;
-            this.Vol1.Location = new System.Drawing.Point(221, 283);
-            this.Vol1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Vol1.Location = new System.Drawing.Point(253, 377);
             this.Vol1.Name = "Vol1";
-            this.Vol1.Size = new System.Drawing.Size(25, 59);
+            this.Vol1.Size = new System.Drawing.Size(29, 79);
             this.Vol1.TabIndex = 2;
             this.Vol1.TabStop = false;
             this.Vol1.Visible = false;
@@ -192,10 +192,9 @@ namespace TowerDefense_TheRPG {
             // Vol2
             // 
             this.Vol2.BackColor = System.Drawing.Color.Gray;
-            this.Vol2.Location = new System.Drawing.Point(252, 283);
-            this.Vol2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Vol2.Location = new System.Drawing.Point(288, 377);
             this.Vol2.Name = "Vol2";
-            this.Vol2.Size = new System.Drawing.Size(25, 59);
+            this.Vol2.Size = new System.Drawing.Size(29, 79);
             this.Vol2.TabIndex = 3;
             this.Vol2.TabStop = false;
             this.Vol2.Visible = false;
@@ -203,10 +202,9 @@ namespace TowerDefense_TheRPG {
             // Vol3
             // 
             this.Vol3.BackColor = System.Drawing.Color.Gray;
-            this.Vol3.Location = new System.Drawing.Point(283, 283);
-            this.Vol3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Vol3.Location = new System.Drawing.Point(323, 377);
             this.Vol3.Name = "Vol3";
-            this.Vol3.Size = new System.Drawing.Size(25, 59);
+            this.Vol3.Size = new System.Drawing.Size(29, 79);
             this.Vol3.TabIndex = 4;
             this.Vol3.TabStop = false;
             this.Vol3.Visible = false;
@@ -214,10 +212,9 @@ namespace TowerDefense_TheRPG {
             // Vol4
             // 
             this.Vol4.BackColor = System.Drawing.Color.Gray;
-            this.Vol4.Location = new System.Drawing.Point(313, 283);
-            this.Vol4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Vol4.Location = new System.Drawing.Point(358, 377);
             this.Vol4.Name = "Vol4";
-            this.Vol4.Size = new System.Drawing.Size(25, 59);
+            this.Vol4.Size = new System.Drawing.Size(29, 79);
             this.Vol4.TabIndex = 5;
             this.Vol4.TabStop = false;
             this.Vol4.Visible = false;
@@ -225,10 +222,9 @@ namespace TowerDefense_TheRPG {
             // Vol5
             // 
             this.Vol5.BackColor = System.Drawing.Color.Gray;
-            this.Vol5.Location = new System.Drawing.Point(344, 283);
-            this.Vol5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Vol5.Location = new System.Drawing.Point(393, 377);
             this.Vol5.Name = "Vol5";
-            this.Vol5.Size = new System.Drawing.Size(25, 59);
+            this.Vol5.Size = new System.Drawing.Size(29, 79);
             this.Vol5.TabIndex = 6;
             this.Vol5.TabStop = false;
             this.Vol5.Visible = false;
@@ -238,10 +234,9 @@ namespace TowerDefense_TheRPG {
             this.VolName.BackColor = System.Drawing.SystemColors.ControlDark;
             this.VolName.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.VolName.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.VolName.Location = new System.Drawing.Point(221, 361);
-            this.VolName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VolName.Location = new System.Drawing.Point(253, 481);
             this.VolName.Name = "VolName";
-            this.VolName.Size = new System.Drawing.Size(148, 39);
+            this.VolName.Size = new System.Drawing.Size(169, 47);
             this.VolName.TabIndex = 7;
             this.VolName.Text = "Volume";
             this.VolName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -250,10 +245,9 @@ namespace TowerDefense_TheRPG {
             // FullScreen
             // 
             this.FullScreen.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FullScreen.Location = new System.Drawing.Point(840, 271);
-            this.FullScreen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FullScreen.Location = new System.Drawing.Point(960, 361);
             this.FullScreen.Name = "FullScreen";
-            this.FullScreen.Size = new System.Drawing.Size(155, 80);
+            this.FullScreen.Size = new System.Drawing.Size(177, 107);
             this.FullScreen.TabIndex = 9;
             this.FullScreen.Text = "Full Screen";
             this.FullScreen.UseVisualStyleBackColor = true;
@@ -263,10 +257,9 @@ namespace TowerDefense_TheRPG {
             // WindowedBtn
             // 
             this.WindowedBtn.Font = new System.Drawing.Font("Segoe UI", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.WindowedBtn.Location = new System.Drawing.Point(840, 388);
-            this.WindowedBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.WindowedBtn.Location = new System.Drawing.Point(960, 517);
             this.WindowedBtn.Name = "WindowedBtn";
-            this.WindowedBtn.Size = new System.Drawing.Size(155, 72);
+            this.WindowedBtn.Size = new System.Drawing.Size(177, 96);
             this.WindowedBtn.TabIndex = 10;
             this.WindowedBtn.Text = "Windowed";
             this.WindowedBtn.UseVisualStyleBackColor = true;
@@ -275,12 +268,13 @@ namespace TowerDefense_TheRPG {
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::TowerDefense_TheRPG.Properties.Resources.title;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1149, 562);
+            this.ClientSize = new System.Drawing.Size(1313, 749);
             this.Controls.Add(this.WindowedBtn);
             this.Controls.Add(this.FullScreen);
             this.Controls.Add(this.VolName);
@@ -298,13 +292,13 @@ namespace TowerDefense_TheRPG {
             this.Controls.Add(this.waveCounter);
             this.Controls.Add(this.waveInstruction);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tower Defense The RPG";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            //this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
-            WindowState = FormWindowState.Maximized;
-            FormBorderStyle = FormBorderStyle.None;
             ((System.ComponentModel.ISupportInitialize)(this.Vol1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vol2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Vol3)).EndInit();

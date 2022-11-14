@@ -18,5 +18,9 @@ namespace TowerDefense_TheRPG {
     private void FrmGameOver_FormClosing(object sender, FormClosingEventArgs e) {
       FormManager.ClearAndCloseFormStack();
     }
-  }
+
+        private void FrmGameOver_Load(object sender, EventArgs e) {
+
+        }
+    }
 }

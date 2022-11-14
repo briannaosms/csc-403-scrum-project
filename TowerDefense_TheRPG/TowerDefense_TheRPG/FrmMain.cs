@@ -536,9 +536,14 @@ namespace TowerDefense_TheRPG {
             WindowState = FormWindowState.Normal;
             FormBorderStyle = FormBorderStyle.Sizable;
         }
-        
+
         #endregion
+
         #endregion
+
+        private void lblStoryLine_Click(object sender, EventArgs e) {
+
+        }
     }
 
 }
